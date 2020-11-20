@@ -1,3 +1,10 @@
+# Updating
+update.sh
+
+# backups
+custom_prompts/*.bak
+custom_prompts/kali*
+
 # Compiled class file
 *.class
 
