@@ -128,7 +128,7 @@ set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8:"
+set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 set $ws11 "11"
@@ -187,8 +187,8 @@ bindsym $mod+Shift+mod2+KP_9 move container to workspace number $ws19
 bindsym $mod+Shift+mod2+KP_0 move container to workspace number $ws20
 
 # Assign applications to specific workspaces
-# assign [class="Firefox-esr"] $ws8
-# assign [class="Rhythmbox"] $ws4
+assign [class="Spotify"] $ws2
+assign [class="	Firefox-esr"] $w4
 
 # i3lock Screen
 bindsym $mod+Shift+x exec i3lock --color "#112233"
@@ -231,7 +231,7 @@ bindsym $mod+r mode "resize"
 hide_edge_borders both
 
 # Manage Opacity of windows
-# exec_always --no-startup-id compton
+exec_always --no-startup-id compton
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -258,7 +258,7 @@ bar {
 # e.g.	exec_always firefox	=> loads and runs firefox at every restart of i3
 #
 # Setting the wallpaper
-# exec_always --no-startup-id feh --bg-scale /home/karoki/Pictures/blue_kali_dragon-wallpaper-1920x1080.jpg
+exec_always --no-startup-id feh --bg-scale /home/karoki/Pictures/Assassins-Creed.jpg
 #
 #
 
