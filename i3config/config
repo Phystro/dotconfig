@@ -33,8 +33,8 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio. PulseAudio Controls
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && $refresh_i3status && pactl set-sink-mute 0 0 # @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && $refresh_i3status && pactl set-sink-mute 0 0 # @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pactl set-sink-mute 0 0 && $refresh_i3status # @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pactl set-sink-mute 0 0 && $refresh_i3status # @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 0 toggle && $refresh_i3status
 
@@ -44,10 +44,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 0 toggle && 
 
 
 # Media player controls using playerctl
-bindsym XF86AudioPlay exec playerctl play-pause		# toggle between play and pause
-bindsym XF86AudioPause exec playerctl play-pause	# toggle between play and pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause	&& pactl set-sink-mute 0 0 	# toggle between play and pause
+bindsym XF86AudioPause exec playerctl play-pause				# toggle between play and pause
+bindsym XF86AudioNext exec playerctl next && pactl set-sink-mute 0 0 
+bindsym XF86AudioPrev exec playerctl previous && pactl set-sink-mute 0 0 
 
 # Take Screenshot of Entire Screen
 bindsym Print exec gnome-screenshot
@@ -188,7 +188,7 @@ bindsym $mod+Shift+mod2+KP_0 move container to workspace number $ws20
 
 # Assign applications to specific workspaces
 assign [class="Spotify"] $ws2
-assign [class="	Firefox-esr"] $w4
+assign [class="	Firefox-esr"] $ws4
 
 # i3lock Screen
 bindsym $mod+Shift+x exec i3lock --color "#112233"
