@@ -33,8 +33,8 @@ exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio. PulseAudio Controls
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% && pactl set-sink-mute 0 0 && $refresh_i3status # @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% && pactl set-sink-mute 0 0 && $refresh_i3status # @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +1% && pactl set-sink-mute 0 0 && $refresh_i3status # @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -1% && pactl set-sink-mute 0 0 && $refresh_i3status # @DEFAULT_SINK@ -10% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 0 toggle && $refresh_i3status
 
@@ -121,16 +121,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
+set $ws1 "1 SysAdmin"
+set $ws2 "2 Spotify"
+set $ws3 "3 Dev"
+set $ws4 "4 Firefox"
+set $ws5 "5 Dirs"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8"
+set $ws8 "8 TeXstudio"
 set $ws9 "9"
-set $ws10 "10"
+set $ws10 "10 Discord"
 set $ws11 "11"
 set $ws12 "12"
 set $ws13 "13"
@@ -186,9 +186,13 @@ bindsym $mod+Shift+mod2+KP_8 move container to workspace number $ws18
 bindsym $mod+Shift+mod2+KP_9 move container to workspace number $ws19
 bindsym $mod+Shift+mod2+KP_0 move container to workspace number $ws20
 
+##################################################################################
 # Assign applications to specific workspaces
-assign [class="Spotify"] $ws2
-assign [class="	Firefox-esr"] $ws4
+##################################################################################
+assign [class="^Spotify*"] $ws2
+assign [class="Firefox-esr"] $ws4
+assign [class="TeXstudio"] $ws8
+assign [class="discord"] $ws10
 
 # i3lock Screen
 bindsym $mod+Shift+x exec i3lock --color "#112233"
@@ -258,7 +262,7 @@ bar {
 # e.g.	exec_always firefox	=> loads and runs firefox at every restart of i3
 #
 # Setting the wallpaper
-exec_always --no-startup-id feh --bg-scale /home/karoki/Pictures/Assassins-Creed.jpg
+exec_always --no-startup-id feh --bg-scale /home/karoki/Pictures/doctor\ strange.jpg
 #
 #
 
